@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMainEntriesTbl extends Migration
+class CreateMainEntryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,15 @@ class CreateMainEntriesTbl extends Migration
      */
     public function up()
     {
-        Schema::create('MainEntries', function (Blueprint $table) {
+        Schema::create('MainEntry', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
             $table->text('description');
+            $table->float('cost_m2');
+            $table->string('unit_m2');
+            $table->float('cost_sf');
+            $table->string('unit_sf');
+            $table->integer('category');           
+            $table->string('element_code'); 
             $table->timestamps();
         });
     }
@@ -28,6 +33,6 @@ class CreateMainEntriesTbl extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('MainEntries');
+        Schema::dropIfExists('MainEntry');
     }
 }
